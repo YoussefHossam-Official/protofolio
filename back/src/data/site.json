@@ -1,15 +1,16 @@
 {
-  "name": "Yousef Hossam",
-  "title": "Backend Developer",
-  "email": "youssef@example.com",
-  "bio": "Backend developer passionate about building scalable APIs and clean architecture. Specialize in Node.js, Express, and database design.",
-  "about": "I build backend systems that scale. With experience in Node.js and modern backend technologies, I focus on writing clean, maintainable code and designing robust APIs.",
+  "name": "Youssef Hossam",
+  "title": "Jr Backend Developer | .NET & Node.js",
+  "email": "yh55694@gmail.com",
+  "phone": "01060758396",
+  "bio": "Building scalable APIs & real-time apps with .NET and Node.js.",
+  "about": "I'm a backend developer specialized in .NET Core and Node.js, passionate about designing scalable APIs, real-time systems, and clean architectures. I enjoy building products that combine performance with simplicity. Currently a Junior Backend Developer, studying at Faculty of Computers & AI, Cairo University.",
   "avatar": "/images/avatar.jpg",
   "resume": "/images/resume.pdf",
   "social": {
     "github": "https://github.com/YoussefHossam-Official",
     "linkedin": "https://linkedin.com/in/youssef-hossam",
-    "twitter": "https://twitter.com/youssef_hossam"
+    "twitter": ""
   },
   "colors": {
     "primary": "#050505",
@@ -27,5 +28,5 @@
     "darkBorder": "#1a1a1a"
   },
   "siteName": "Yousef Hossam",
-  "siteDesc": "Backend Developer Portfolio"
+  "siteDesc": "Jr Backend Developer | .NET & Node.js"
 }

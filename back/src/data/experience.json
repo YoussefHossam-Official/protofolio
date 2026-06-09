@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1,
+    "company": "DEPI",
+    "position": "Full-stack Developer Trainee",
+    "from": "2025-06",
+    "to": "2025-12",
+    "description": [
+      "Developing scalable REST APIs using .NET Core MVC",
+      "Building user authentication systems, role-based APIs, and database-driven services with SQL Server",
+      "Integrating frontend with backend logic using Entity Framework"
+    ]
+  },
+  {
+    "id": 2,
+    "company": "Innovitics",
+    "position": "Backend Developer Intern",
+    "from": "2025-08",
+    "to": "2025-09",
+    "description": [
+      "Developed scalable REST APIs using .NET Core",
+      "Designed and optimized database schemas for high performance",
+      "Collaborated with cross-functional teams to deliver quality software"
+    ]
+  }
+]

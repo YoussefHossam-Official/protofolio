@@ -1,1 +1,174 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "SkillZone — Online Learning Platform API",
+    "slug": "skillzone-online-learning-platform-api",
+    "description": "Online learning API for managing educational centers, branches, courses, instructors, and student interactions. Features include role-based access control, JWT authentication, Google OAuth 2.0, and comprehensive course management with progress tracking, quizzes, and PDF certificate generation.",
+    "shortDesc": "Online learning platform API with RBAC, JWT, and OAuth 2.0",
+    "techStack": ["Node.js", "Express.js", "MongoDB", "JWT", "OAuth 2.0"],
+    "github": "https://github.com/YoussefHossam-Official/lms",
+    "live": "",
+    "image": "",
+    "features": [
+      "JWT Authentication & Google OAuth 2.0",
+      "Role-based Access Control (students/teachers/admins)",
+      "Course, lesson, and quiz management",
+      "Progress tracking",
+      "PDF certificate generation"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "E-commerce API",
+    "slug": "e-commerce-api",
+    "description": "A full-featured e-commerce backend API built with Node.js and Express. Implements JWT authentication, role-based access control, product management, shopping cart, order processing, and payment integration.",
+    "shortDesc": "Full e-commerce backend with auth, products, cart, and orders",
+    "techStack": ["Node.js", "Express.js", "MongoDB", "JWT", "RBAC"],
+    "github": "https://github.com/YoussefHossam-Official/ecommerce-api",
+    "live": "",
+    "image": "",
+    "features": [
+      "JWT authentication with role-based access",
+      "Product CRUD with categories and search",
+      "Shopping cart management",
+      "Order processing pipeline",
+      "Payment integration ready"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Workflow Automation Platform",
+    "slug": "workflow-automation-platform",
+    "description": "A workflow automation platform built with TypeScript, enabling users to create, manage, and execute automated workflows. Features include visual workflow builder, scheduled tasks, webhook triggers, and integrations with common services.",
+    "shortDesc": "Automate workflows with a visual builder and scheduled tasks",
+    "techStack": ["TypeScript", "Node.js", "Express.js"],
+    "github": "https://github.com/YoussefHossam-Official/workflow-automation-platform",
+    "live": "",
+    "image": "",
+    "features": [
+      "Visual workflow builder",
+      "Scheduled task execution",
+      "Webhook triggers",
+      "Service integrations"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "SaaS Multitenant API",
+    "slug": "saas-multitenant-api",
+    "description": "A multitenant SaaS backend architecture built with Node.js and Express. Supports tenant isolation, shared database with tenant-scoped queries, subscription management, and billing integration.",
+    "shortDesc": "Multitenant SaaS backend with tenant isolation and billing",
+    "techStack": ["Node.js", "Express.js", "MongoDB", "JWT"],
+    "github": "https://github.com/YoussefHossam-Official/saas-multitenant",
+    "live": "",
+    "image": "",
+    "features": [
+      "Tenant isolation with scoped queries",
+      "Subscription and billing management",
+      "JWT authentication per tenant",
+      "Admin dashboard for tenant management"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Microservices Project",
+    "slug": "microservices-project",
+    "description": "A microservices-based architecture demonstrating service decomposition, API gateway pattern, inter-service communication via message queues, service discovery, and containerized deployment with Docker.",
+    "shortDesc": "Microservices demo with API gateway and message queues",
+    "techStack": ["Node.js", "Express.js", "Docker", "RabbitMQ"],
+    "github": "https://github.com/YoussefHossam-Official/microservices-project",
+    "live": "",
+    "image": "",
+    "features": [
+      "API Gateway pattern",
+      "Inter-service communication via message queues",
+      "Service discovery",
+      "Docker containerization"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Event Booking API",
+    "slug": "event-booking-api",
+    "description": "A RESTful API for event management and ticket booking. Supports creating events with capacity limits, booking tickets, waiting list management, and event analytics.",
+    "shortDesc": "Event management and ticket booking API",
+    "techStack": ["Node.js", "Express.js", "MongoDB", "JWT"],
+    "github": "https://github.com/YoussefHossam-Official/event-booking-api",
+    "live": "",
+    "image": "",
+    "features": [
+      "Event CRUD with capacity management",
+      "Ticket booking with conflict detection",
+      "Waiting list management",
+      "Event analytics and reporting"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Fitness Tracker API",
+    "slug": "fitness-tracker-api",
+    "description": "A RESTful API for logging workouts, tracking progress, and generating fitness summaries. Users can create workout routines, log exercises, view progress over time, and get personalized fitness insights.",
+    "shortDesc": "Log workouts, track progress, get fitness summaries",
+    "techStack": ["Node.js", "Express.js", "MongoDB"],
+    "github": "https://github.com/YoussefHossam-Official/fitness-tracker-api",
+    "live": "",
+    "image": "",
+    "features": [
+      "Workout logging and routines",
+      "Progress tracking with charts",
+      "Personalized fitness insights",
+      "Exercise library"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "URL Shortener API",
+    "slug": "url-shortener-api",
+    "description": "A URL shortening service that converts long URLs into short, shareable links. Supports custom aliases, click tracking, expiration dates, and analytics.",
+    "shortDesc": "Shorten URLs with custom aliases and click tracking",
+    "techStack": ["Node.js", "Express.js", "MongoDB"],
+    "github": "https://github.com/YoussefHossam-Official/url-shortener",
+    "live": "",
+    "image": "",
+    "features": [
+      "URL shortening with custom aliases",
+      "Click tracking and analytics",
+      "Link expiration",
+      "RESTful API"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Notes API",
+    "slug": "notes-api",
+    "description": "A CRUD API for managing notes with rich text, tags, categories, and full-text search. Supports user authentication, note sharing, and markdown rendering.",
+    "shortDesc": "CRUD notes with tags, search, and markdown",
+    "techStack": ["Node.js", "Express.js", "MongoDB", "JWT"],
+    "github": "https://github.com/YoussefHossam-Official/notes-api",
+    "live": "",
+    "image": "",
+    "features": [
+      "CRUD operations with rich text",
+      "Tagging and categorization",
+      "Full-text search",
+      "Note sharing between users"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Chatbot API",
+    "slug": "chatbot-api",
+    "description": "A rule-based chatbot API that processes user messages and returns intelligent responses. Supports multiple conversation flows, context awareness, and easy extensibility for custom rules.",
+    "shortDesc": "Rule-based chatbot with conversation flows",
+    "techStack": ["Node.js", "Express.js"],
+    "github": "https://github.com/YoussefHossam-Official/chatbot-api",
+    "live": "",
+    "image": "",
+    "features": [
+      "Rule-based response engine",
+      "Multi-flow conversation support",
+      "Context-aware responses",
+      "Extensible rule system"
+    ]
+  }
+]

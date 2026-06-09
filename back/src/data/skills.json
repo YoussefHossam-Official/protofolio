@@ -1,7 +1,8 @@
 {
-  "languages": ["JavaScript", "TypeScript", "Python", "C++"],
-  "frameworks": ["Express.js", "NestJS", "Fastify"],
-  "databases": ["MongoDB", "PostgreSQL", "Redis"],
-  "tools": ["Docker", "Git", "Linux", "AWS", "Postman"],
-  "concepts": ["REST APIs", "Microservices", "System Design", "Clean Architecture"]
+  "languages": ["C#", "JavaScript", "TypeScript", "Python", "SQL", "PHP"],
+  "frameworks": [".NET Core", "Express.js", "Django", "Laravel", "Entity Framework Core", "SignalR"],
+  "databases": ["MongoDB", "MySQL", "SQL Server"],
+  "tools": ["Docker", "Git", "Postman", "Jira", "Azure"],
+  "concepts": ["REST APIs", "Microservices", "JWT", "OAuth 2.0", "Socket.IO", "Clean Architecture"],
+  "certifications": ["Network+", "eJPTv1", "HCIA-Security", "CCNA"]
 }

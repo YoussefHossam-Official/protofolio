@@ -1,0 +1,31 @@
+{
+  "name": "Youssef Hossam",
+  "title": "Backend Developer",
+  "email": "youssef@example.com",
+  "bio": "Backend developer passionate about building scalable APIs and clean architecture. Specialize in Node.js, Express, and database design.",
+  "about": "I build backend systems that scale. With experience in Node.js and modern backend technologies, I focus on writing clean, maintainable code and designing robust APIs.",
+  "avatar": "/images/avatar.jpg",
+  "resume": "/images/resume.pdf",
+  "social": {
+    "github": "https://github.com/YoussefHossam-Official",
+    "linkedin": "https://linkedin.com/in/youssef-hossam",
+    "twitter": "https://twitter.com/youssef_hossam"
+  },
+  "colors": {
+    "primary": "#0a0a0a",
+    "secondary": "#f5f5f5",
+    "accent": "#6366f1",
+    "text": "#1a1a2e",
+    "textLight": "#64748b",
+    "cardBg": "#ffffff",
+    "border": "#e2e8f0",
+    "success": "#22c55e",
+    "error": "#ef4444",
+    "darkBg": "#0a0a0a",
+    "darkCard": "#1a1a2e",
+    "darkText": "#e2e8f0",
+    "darkBorder": "#2d2d44"
+  },
+  "siteName": "Youssef Hossam",
+  "siteDesc": "Backend Developer Portfolio"
+}

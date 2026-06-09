@@ -1,0 +1,10 @@
+{
+  "name": "youssef-portfolio",
+  "version": "1.0.0",
+  "description": "Youssef Hossam — Backend Developer Portfolio",
+  "scripts": {
+    "dev": "npm run dev --prefix back",
+    "install:all": "npm install --prefix back",
+    "start": "npm start --prefix back"
+  }
+}

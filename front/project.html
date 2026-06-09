@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — Youssef Hossam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/dark.css">
+  <style id="theme-vars"></style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container project-detail" id="projectDetail">
+        <p class="loading">Loading project...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/YoussefHossam-Official" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
+        <a href="#" id="footerEmail">Email</a>
+      </div>
+      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/dark-mode.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+    if (!slug) { document.getElementById('projectDetail').innerHTML = '<p class="empty">No project specified.</p>'; }
+    else {
+      fetch('/api/pages')
+        .then(r => r.json())
+        .then(d => { if (d.site) applyTheme(d.site.colors); });
+      fetch(`/api/projects/${slug}`)
+        .then(r => r.ok ? r.json() : Promise.reject('Not found'))
+        .then(p => {
+          document.title = p.title + ' — Youssef Hossam';
+          document.getElementById('projectDetail').innerHTML = `
+            <a href="/projects.html" class="back-link">&larr; Back to Projects</a>
+            <h1>${p.title}</h1>
+            <div class="tech-stack">${(p.techStack || []).map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
+            <p class="project-desc">${p.description || ''}</p>
+            ${p.features?.length ? `<h3>Features</h3><ul class="features-list">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
+            <div class="project-links">
+              ${p.github ? `<a href="${p.github}" target="_blank" class="btn btn-outline">View on GitHub</a>` : ''}
+              ${p.live ? `<a href="${p.live}" target="_blank" class="btn btn-primary">Live Demo</a>` : ''}
+            </div>
+          `;
+        })
+        .catch(() => document.getElementById('projectDetail').innerHTML = '<p class="empty">Project not found.</p>');
+    }
+  </script>
+</body>
+</html>

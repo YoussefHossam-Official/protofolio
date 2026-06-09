@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <style id="theme-vars"></style>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <h1>Manage Experience</h1>
+      <nav class="admin-nav">
+        <a href="/admin/index.html">Dashboard</a>
+        <a href="/admin/site.html">Site</a>
+        <a href="/admin/projects.html">Projects</a>
+        <a href="/admin/skills.html">Skills</a>
+        <a href="#" id="adminLogout">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <main class="admin-main">
+    <div class="container">
+      <button id="showAddForm" class="btn btn-primary" style="margin-bottom:20px">+ Add Experience</button>
+      <form id="expForm" class="admin-form" style="display:none">
+        <input type="hidden" id="e_id">
+        <div class="form-group"><label>Company</label><input type="text" id="e_company" required></div>
+        <div class="form-group"><label>Position</label><input type="text" id="e_position" required></div>
+        <div class="form-group"><label>From (e.g. 2023-01)</label><input type="text" id="e_from" placeholder="2023-01"></div>
+        <div class="form-group"><label>To (e.g. 2024-06, leave empty for present)</label><input type="text" id="e_to" placeholder="2024-06"></div>
+        <div class="form-group"><label>Description (one per line)</label><textarea id="e_desc" rows="4"></textarea></div>
+        <button type="submit" class="btn btn-primary" id="e_submit">Save</button>
+        <button type="button" id="e_cancel" class="btn btn-outline">Cancel</button>
+        <p id="e_msg" class="form-msg"></p>
+      </form>
+      <div id="expList" class="admin-list"></div>
+    </div>
+  </main>
+  <script src="/js/admin/experience.js"></script>
+</body>
+</html>

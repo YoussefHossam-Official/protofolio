@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Youssef Hossam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/dark.css">
+  <style id="theme-vars"></style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about.html" class="active">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-header">
+      <div class="container">
+        <h1>About Me</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-text" id="aboutText">
+          <p class="loading">Loading...</p>
+        </div>
+        <div class="skills-section" id="skillsSection">
+          <h3>Skills</h3>
+          <div id="skillsContent"><p class="loading">Loading...</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline" id="timeline">
+          <p class="loading">Loading...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/YoussefHossam-Official" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
+        <a href="#" id="footerEmail">Email</a>
+      </div>
+      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/dark-mode.js"></script>
+  <script>
+    fetch('/api/pages/about')
+      .then(r => r.json())
+      .then(d => {
+        const s = d.site;
+        document.getElementById('aboutText').innerHTML = `<p>${s.about || 'Loading...'}</p>`;
+        applyTheme(s.colors);
+        if (s.social?.linkedin) document.getElementById('footerLinkedin').href = s.social.linkedin;
+        if (s.email) document.getElementById('footerEmail').href = 'mailto:' + s.email;
+        document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
+        // Skills
+        const skills = d.skills;
+        const container = document.getElementById('skillsContent');
+        container.innerHTML = Object.entries(skills || {}).map(([cat, items]) =>
+          `<div class="skill-cat"><h4>${cat.charAt(0).toUpperCase() + cat.slice(1)}</h4><div class="skill-tags">${(items || []).map(i => `<span class="skill-tag">${i}</span>`).join('')}</div></div>`
+        ).join('');
+        // Timeline
+        const timeline = document.getElementById('timeline');
+        if (!d.experience?.length) { timeline.innerHTML = '<p class="empty">No experience added yet.</p>'; return; }
+        timeline.innerHTML = d.experience.map(e => `
+          <div class="timeline-item">
+            <div class="timeline-date">${e.from || ''} — ${e.to || 'Present'}</div>
+            <h3>${e.position}</h3>
+            <h4>${e.company}</h4>
+            ${e.description ? `<p>${Array.isArray(e.description) ? e.description.join('<br>') : e.description}</p>` : ''}
+          </div>
+        `).join('');
+      });
+  </script>
+</body>
+</html>

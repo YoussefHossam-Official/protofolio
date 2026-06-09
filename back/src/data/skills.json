@@ -1,0 +1,7 @@
+{
+  "languages": ["JavaScript", "TypeScript", "Python", "C++"],
+  "frameworks": ["Express.js", "NestJS", "Fastify"],
+  "databases": ["MongoDB", "PostgreSQL", "Redis"],
+  "tools": ["Docker", "Git", "Linux", "AWS", "Postman"],
+  "concepts": ["REST APIs", "Microservices", "System Design", "Clean Architecture"]
+}

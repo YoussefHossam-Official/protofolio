@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Youssef Hossam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/dark.css">
+  <style id="theme-vars"></style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html" class="active">Projects</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-header">
+      <div class="container">
+        <h1>Projects</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="projects-grid" id="projectsList">
+          <p class="loading">Loading projects...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/YoussefHossam-Official" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
+        <a href="#" id="footerEmail">Email</a>
+      </div>
+      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/dark-mode.js"></script>
+  <script>
+    fetch('/api/pages')
+      .then(r => r.json())
+      .then(d => { if (d.site) applyTheme(d.site.colors); });
+    fetch('/api/projects')
+      .then(r => r.json())
+      .then(projects => {
+        const container = document.getElementById('projectsList');
+        if (!projects.length) { container.innerHTML = '<p class="empty">No projects yet.</p>'; return; }
+        container.innerHTML = projects.map(p => `
+          <a href="/project.html?slug=${p.slug}" class="project-card">
+            ${p.image ? `<img src="${p.image}" alt="${p.title}" class="project-img">` : ''}
+            <h3>${p.title}</h3>
+            <p>${p.shortDesc || p.description?.slice(0, 120) || ''}</p>
+            <div class="tech-stack">${(p.techStack || []).map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
+            <div class="project-links">
+              ${p.github ? `<span class="link-icon">GitHub</span>` : ''}
+              ${p.live ? `<span class="link-icon">Live</span>` : ''}
+            </div>
+          </a>
+        `).join('');
+      });
+  </script>
+</body>
+</html>

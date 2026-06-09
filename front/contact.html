@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Youssef Hossam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/dark.css">
+  <style id="theme-vars"></style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/contact.html" class="active">Contact</a>
+      </nav>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-header">
+      <div class="container">
+        <h1>Contact Me</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required minlength="2" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required minlength="10" rows="5" placeholder="Your message..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+        </form>
+        <div class="contact-info" id="contactInfo">
+          <h3>Let's talk</h3>
+          <p class="loading">Loading...</p>
+        </div>
+      </div>
+      <div id="formMsg" class="container"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/YoussefHossam-Official" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
+        <a href="#" id="footerEmail">Email</a>
+      </div>
+      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/dark-mode.js"></script>
+  <script src="/js/contact.js"></script>
+  <script>
+    fetch('/api/pages/contact')
+      .then(r => r.json())
+      .then(d => {
+        const s = d.site;
+        applyTheme(s.colors);
+        document.getElementById('contactInfo').innerHTML = `
+          <p>${s.bio || ''}</p>
+          <p class="contact-email">${s.email ? `<a href="mailto:${s.email}">${s.email}</a>` : ''}</p>
+          <div class="social-links">
+            ${s.social?.github ? `<a href="${s.social.github}" target="_blank">GitHub</a>` : ''}
+            ${s.social?.linkedin ? `<a href="${s.social.linkedin}" target="_blank">LinkedIn</a>` : ''}
+            ${s.social?.twitter ? `<a href="${s.social.twitter}" target="_blank">Twitter</a>` : ''}
+          </div>
+        `;
+        if (s.social?.linkedin) document.getElementById('footerLinkedin').href = s.social.linkedin;
+        if (s.email) document.getElementById('footerEmail').href = 'mailto:' + s.email;
+        document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
+      });
+  </script>
+</body>
+</html>

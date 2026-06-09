@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/dark.css">
+  <style id="theme-vars"></style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section error-page">
+      <div class="container">
+        <h1 class="error-code">404</h1>
+        <p class="error-text">Page not found. <span class="blink">_</span></p>
+        <a href="/" class="btn btn-primary">Go Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">&copy; Youssef Hossam</p>
+    </div>
+  </footer>
+
+  <script src="/js/dark-mode.js"></script>
+  <script>
+    fetch('/api/pages')
+      .then(r => r.json())
+      .then(d => { if (d.site?.colors) applyTheme(d.site.colors); });
+  </script>
+</body>
+</html>

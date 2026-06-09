@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Settings — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <style id="theme-vars"></style>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <h1>Site Settings</h1>
+      <nav class="admin-nav">
+        <a href="/admin/index.html">Dashboard</a>
+        <a href="/admin/projects.html">Projects</a>
+        <a href="/admin/skills.html">Skills</a>
+        <a href="/admin/experience.html">Experience</a>
+        <a href="#" id="adminLogout">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <main class="admin-main">
+    <div class="container">
+      <form id="siteForm" class="admin-form">
+        <fieldset>
+          <legend>Personal Info</legend>
+          <div class="form-group"><label>Name</label><input type="text" name="name" id="s_name"></div>
+          <div class="form-group"><label>Title</label><input type="text" name="title" id="s_title"></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" id="s_email"></div>
+          <div class="form-group"><label>Bio</label><textarea name="bio" id="s_bio" rows="3"></textarea></div>
+          <div class="form-group"><label>About</label><textarea name="about" id="s_about" rows="5"></textarea></div>
+        </fieldset>
+        <fieldset>
+          <legend>Social Links</legend>
+          <div class="form-group"><label>GitHub</label><input type="url" name="social.github" id="s_github"></div>
+          <div class="form-group"><label>LinkedIn</label><input type="url" name="social.linkedin" id="s_linkedin"></div>
+          <div class="form-group"><label>Twitter</label><input type="url" name="social.twitter" id="s_twitter"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Colors</legend>
+          <div class="color-grid" id="colorGrid"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Security</legend>
+          <div class="form-group"><label>Change Password</label><input type="password" id="currentPass" placeholder="Current password"></div>
+          <div class="form-group"><label>New Password</label><input type="password" id="newPass" placeholder="New password"></div>
+          <button type="button" id="changePassBtn" class="btn btn-outline">Change Password</button>
+          <div class="form-group" style="margin-top:20px">
+            <label>Master Reset Key</label>
+            <input type="text" id="masterResetKey" placeholder="Enter MASTER_RESET_KEY from env">
+            <button type="button" id="masterResetBtn" class="btn btn-outline" style="color:var(--error)">Master Reset (deletes password)</button>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <p id="siteMsg" class="form-msg"></p>
+      </form>
+    </div>
+  </main>
+  <script src="/js/admin/site.js"></script>
+</body>
+</html>

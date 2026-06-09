@@ -2,6 +2,7 @@
   "name": "youssef-portfolio",
   "version": "1.0.0",
   "description": "Youssef Hossam — Backend Developer Portfolio",
+  "engines": { "node": "20.x" },
   "scripts": {
     "dev": "npm run dev --prefix back",
     "install:all": "npm install --prefix back",

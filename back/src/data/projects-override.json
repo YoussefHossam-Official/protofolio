@@ -15,5 +15,9 @@
   {
     "slug": "ecommerce-api",
     "hidden": true
+  },
+  {
+    "slug": "workflow-automation-platform",
+    "hidden": true
   }
 ]

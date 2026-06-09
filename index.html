@@ -64,6 +64,7 @@
         </div>
         <div class="hero-image" id="heroImageContainer">
           <img id="heroImage" src="/images/avatar.jpg" alt="Yousef Hossam">
+          <div class="hero-placeholder" id="heroPlaceholder" style="display:none">YH</div>
         </div>
       </div>
     </section>
@@ -101,8 +102,18 @@
         document.getElementById('heroName').textContent = s.name;
         document.getElementById('heroBadge').textContent = s.title;
         document.getElementById('heroBio').textContent = s.bio;
-        if (s.avatar) document.getElementById('heroImage').src = s.avatar;
-        document.getElementById('heroImage').alt = s.name;
+        const img = document.getElementById('heroImage');
+        const ph = document.getElementById('heroPlaceholder');
+        if (s.avatar) {
+          img.src = s.avatar;
+          img.style.display = 'block';
+          ph.style.display = 'none';
+        } else {
+          img.style.display = 'none';
+          ph.textContent = (s.name || 'YH').split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase() || 'YH';
+          ph.style.display = 'flex';
+        }
+        img.alt = s.name;
         if (s.social?.linkedin) document.getElementById('footerLinkedin').href = s.social.linkedin;
         if (s.email) document.getElementById('footerEmail').href = 'mailto:' + s.email;
         document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;

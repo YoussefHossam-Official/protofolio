@@ -129,7 +129,7 @@
           container.innerHTML = '<p class="empty">No projects yet.</p>';
           return;
         }
-        container.innerHTML = projects.slice(0, 3).map(p => `
+        container.innerHTML = projects.slice(0, 6).map(p => `
           <a href="/project.html?slug=${p.slug}" class="project-card">
             <h3>${p.title}</h3>
             <p>${p.shortDesc || p.description?.slice(0, 100)}</p>

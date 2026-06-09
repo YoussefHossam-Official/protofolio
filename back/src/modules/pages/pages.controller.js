@@ -5,7 +5,7 @@ const dataService = require('../../services/data.service');
 
 module.exports.home = (req, res) => {
   const site = dataService.readFile('site.json');
-  const projects = dataService.getAll('projects.json').slice(0, 3); // a5er 3 m4ary3
+  const projects = dataService.getAll('projects.json').slice(0, 6); // awel 6 m4ary3
   res.json({ page: 'home', site, projects });
 };
 

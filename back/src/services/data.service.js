@@ -4,24 +4,44 @@ const config = require('../config');
 const gitStorage = require('./github-storage.service');
 
 const dataDir = config.paths.data;
+const tmpCacheDir = '/tmp/portfolio-data';
+
+function ensureTmpDir() {
+  try { fs.mkdirSync(tmpCacheDir, { recursive: true }); } catch {}
+}
 
 function getFilePath(filename) {
   return path.join(dataDir, filename);
 }
 
-// bn2ra mn el local file (sync, 3ashan ns7ab async)
-function readLocal(filename) {
-  try {
-    const raw = fs.readFileSync(getFilePath(filename), 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
+function getTmpPath(filename) {
+  return path.join(tmpCacheDir, filename);
 }
 
-// bn2ra gowah JSON (zay mkan — sync)
+// bn2ra mn el cache (/tmp/) awl 7aga (3ala Vercel /tmp byt7fz)
+function readFromCache(filename) {
+  ensureTmpDir();
+  try {
+    const raw = fs.readFileSync(getTmpPath(filename), 'utf-8');
+    return JSON.parse(raw);
+  } catch { return null; }
+}
+
+function writeToCache(filename, data) {
+  ensureTmpDir();
+  try { fs.writeFileSync(getTmpPath(filename), JSON.stringify(data, null, 2), 'utf-8'); } catch {}
+}
+
+// bn2ra mn el local file (el default files mn el deploy)
+function readLocal(filename) {
+  try {
+    return JSON.parse(fs.readFileSync(getFilePath(filename), 'utf-8'));
+  } catch { return null; }
+}
+
+// bn2ra: /tmp cache awl, b3den local deploy files
 function getAll(filename) {
-  return readLocal(filename) || [];
+  return readFromCache(filename) || readLocal(filename) || [];
 }
 
 function getById(filename, id) {
@@ -35,14 +55,14 @@ function getBySlug(filename, slug) {
 }
 
 function readFile(filename) {
-  return readLocal(filename);
+  return readFromCache(filename) || readLocal(filename);
 }
 
-// bnktb 3ala el local w b3den 3ala GitHub
+// bnktb: local + /tmp/cache + GitHub API
 function persist(filename, data) {
   const json = JSON.stringify(data, null, 2);
   try { fs.writeFileSync(getFilePath(filename), json, 'utf-8'); } catch {}
-  // fire-and-forget: bn7fz 3ala GitHub 3ashan n7l meshklt Vercel
+  writeToCache(filename, data);
   gitStorage.writeJSON(filename, data).catch(() => {});
 }
 

@@ -22,5 +22,12 @@
       "Designed and optimized database schemas for high performance",
       "Collaborated with cross-functional teams to deliver quality software"
     ]
+  },
+  {
+    "id": 1781006986350,
+    "company": "Test Company",
+    "position": "Tester",
+    "period": "2024",
+    "description": "test entry"
   }
 ]

@@ -3,30 +3,6 @@
   "title": "Jr Backend Developer | .NET & Node.js",
   "email": "yh55694@gmail.com",
   "phone": "01060758396",
-  "bio": "Building scalable APIs & real-time apps with .NET and Node.js.",
-  "about": "I'm a backend developer specialized in .NET Core and Node.js, passionate about designing scalable APIs, real-time systems, and clean architectures. I enjoy building products that combine performance with simplicity. Currently a Junior Backend Developer, studying at Faculty of Computers & AI, Cairo University.",
-  "avatar": "",
-  "resume": "",
-  "social": {
-    "github": "https://github.com/YoussefHossam-Official",
-    "linkedin": "https://linkedin.com/in/youssef-hossam",
-    "twitter": ""
-  },
-  "colors": {
-    "primary": "#050505",
-    "secondary": "#050505",
-    "accent": "#00ff41",
-    "text": "#e0e0e0",
-    "textLight": "#888888",
-    "cardBg": "#0a0a0a",
-    "border": "#1a1a1a",
-    "success": "#00ff41",
-    "error": "#ff3333",
-    "darkBg": "#050505",
-    "darkCard": "#0a0a0a",
-    "darkText": "#e0e0e0",
-    "darkBorder": "#1a1a1a"
-  },
-  "siteName": "Yousef Hossam",
-  "siteDesc": "Jr Backend Developer | .NET & Node.js"
+  "bio": "Building scalable APIs.",
+  "about": "Backend developer."
 }

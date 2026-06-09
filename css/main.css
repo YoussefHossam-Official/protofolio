@@ -1,6 +1,16 @@
+:root {
+  --bg: #050505;
+  --cardBg: #0a0a0a;
+  --text: #e0e0e0;
+  --textLight: #888888;
+  --border: #1a1a1a;
+  --accent: #00ff41;
+  --error: #ff3333;
+  --success: #00ff41;
+}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background .3s, color .3s; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 a { color: var(--accent); text-decoration: none; }
 img { max-width: 100%; display: block; }
 ul { list-style: none; }

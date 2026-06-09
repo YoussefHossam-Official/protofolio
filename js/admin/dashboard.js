@@ -1,7 +1,7 @@
 // Admin dashboard
 document.addEventListener('DOMContentLoaded', async () => {
   const authRes = await fetch('/api/auth/check');
-  if (!authRes.ok) { window.location.href = '/admin/login.html'; return; }
+  if (!authRes.ok) { window.location.href = '/'; return; }
 
   const [projRes, expRes, skillRes] = await Promise.all([
     fetch('/api/projects'),
@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('adminLogout')?.addEventListener('click', async (e) => {
     e.preventDefault();
     await fetch('/api/auth/logout', { method: 'POST' });
-    window.location.href = '/admin/login.html';
+    window.location.href = '/';
   });
 
   document.querySelectorAll('#adminLogout').forEach(el => {
     el.addEventListener('click', async (e) => {
       e.preventDefault();
       await fetch('/api/auth/logout', { method: 'POST' });
-      window.location.href = '/admin/login.html';
+      window.location.href = '/';
     });
   });
 });

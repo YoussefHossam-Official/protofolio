@@ -34,9 +34,11 @@
 .admin-list-item h4 { font-size: 1rem; font-weight: 500; }
 .admin-list-item p { color: var(--textLight); font-size: .8rem; }
 .admin-list-actions { display: flex; gap: 8px; }
-.admin-list-actions button { background: transparent; border: 1px solid rgba(0,255,65,.15); border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: .8rem; color: var(--textLight); transition: all .2s; font-family: inherit; }
-.admin-list-actions .edit-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 8px rgba(0,255,65,.2); }
-.admin-list-actions .del-btn:hover { border-color: var(--error); color: var(--error); box-shadow: 0 0 8px rgba(255,51,51,.2); }
+.admin-list-actions button { background: rgba(10,10,10,.8); border: 1px solid rgba(0,255,65,.25); border-radius: 6px; padding: 6px 14px; cursor: pointer; font-size: .8rem; font-weight: 500; color: #ccc; transition: all .2s; font-family: inherit; }
+.admin-list-actions .edit-btn { color: #00ff41; }
+.admin-list-actions .edit-btn:hover { background: rgba(0,255,65,.1); border-color: #00ff41; box-shadow: 0 0 10px rgba(0,255,65,.25); }
+.admin-list-actions .del-btn { color: #ff5555; }
+.admin-list-actions .del-btn:hover { background: rgba(255,85,85,.1); border-color: #ff5555; box-shadow: 0 0 10px rgba(255,85,85,.25); }
 
 /* Image preview */
 .avatar-preview { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(0,255,65,.2); margin-bottom: 8px; transition: transform .3s; }

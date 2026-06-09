@@ -1,12 +1,12 @@
 // Admin site settings
 document.addEventListener('DOMContentLoaded', async () => {
   const authRes = await fetch('/api/auth/check');
-  if (!authRes.ok) { window.location.href = '/admin/login.html'; return; }
+  if (!authRes.ok) { window.location.href = '/'; return; }
 
   document.getElementById('adminLogout')?.addEventListener('click', async (e) => {
     e.preventDefault();
     await fetch('/api/auth/logout', { method: 'POST' });
-    window.location.href = '/admin/login.html';
+    window.location.href = '/';
   });
 
   const res = await fetch('/api/admin/site');
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       body: JSON.stringify({ key }),
     });
     const data = await res.json();
-    if (data.success) { alert('Password reset. Redirecting to login...'); window.location.href = '/admin/login.html'; }
+    if (data.success) { alert('Password reset. Redirecting to login...'); window.location.href = '/'; }
     else alert(data.error);
   });
 });

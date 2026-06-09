@@ -1,12 +1,12 @@
 // Admin skills page
 document.addEventListener('DOMContentLoaded', async () => {
   const authRes = await fetch('/api/auth/check');
-  if (!authRes.ok) { window.location.href = '/admin/login.html'; return; }
+  if (!authRes.ok) { window.location.href = '/'; return; }
 
   document.getElementById('adminLogout')?.addEventListener('click', async (e) => {
     e.preventDefault();
     await fetch('/api/auth/logout', { method: 'POST' });
-    window.location.href = '/admin/login.html';
+    window.location.href = '/';
   });
 
   // Load current skills

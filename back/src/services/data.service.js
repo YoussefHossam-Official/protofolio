@@ -96,4 +96,18 @@ function writeFile(filename, data) {
   return true;
 }
 
+// bn3ml warm up lel cache mn GitHub (cold start)
+// law GITHUB_TOKEN mawgod, bngeeb a7dath version mn GitHub w n7to fe /tmp/
+async function warmCache() {
+  const files = ['site.json', 'skills.json', 'experience.json', 'projects-override.json', 'auth.json'];
+  for (const f of files) {
+    try {
+      const data = await gitStorage.readJSON(f);
+      if (data) writeToCache(f, data);
+    } catch {}
+  }
+}
+// nsh8l el warm up 3ala tool (ma3nd4 async fash5, bs bn3ml catch)
+warmCache(); // eslint-disable-line
+
 module.exports = { getAll, getById, getBySlug, create, update, remove, readFile, writeFile };

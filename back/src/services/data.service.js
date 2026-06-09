@@ -102,6 +102,8 @@ async function warmCache() {
   const files = ['site.json', 'skills.json', 'experience.json', 'projects-override.json', 'auth.json'];
   for (const f of files) {
     try {
+      // matktb4 3ala el cache law fe 7aga mawgoda fih (3ashan el hidden overrides)
+      if (readFromCache(f) !== null) continue;
       const data = await gitStorage.readJSON(f);
       if (data) writeToCache(f, data);
     } catch {}

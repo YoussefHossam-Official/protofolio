@@ -6,14 +6,20 @@ const dataService = require('../../services/data.service');
 module.exports.getSite = (req, res) => res.json(dataService.readFile('site.json'));
 
 module.exports.updateSite = (req, res) => {
-  dataService.writeFile('site.json', req.body);
+  const existing = dataService.readFile('site.json') || {};
+  // deep merge 3ashan colors w social matro7x4
+  const merged = { ...existing, ...req.body };
+  if (req.body.colors) merged.colors = { ...existing.colors, ...req.body.colors };
+  if (req.body.social) merged.social = { ...existing.social, ...req.body.social };
+  dataService.writeFile('site.json', merged);
   res.json({ success: true });
 };
 
 module.exports.getSkills = (req, res) => res.json(dataService.readFile('skills.json'));
 
 module.exports.updateSkills = (req, res) => {
-  dataService.writeFile('skills.json', req.body);
+  const existing = dataService.readFile('skills.json') || {};
+  dataService.writeFile('skills.json', { ...existing, ...req.body });
   res.json({ success: true });
 };
 

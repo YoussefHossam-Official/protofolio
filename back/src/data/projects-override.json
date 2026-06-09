@@ -23,5 +23,9 @@
   {
     "slug": "wifi-captive-portal-professional",
     "hidden": true
+  },
+  {
+    "slug": "saas-multitenant",
+    "hidden": true
   }
 ]

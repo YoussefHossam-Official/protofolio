@@ -31,8 +31,9 @@
           <div class="form-group"><label>Name</label><input type="text" name="name" id="s_name"></div>
           <div class="form-group"><label>Title</label><input type="text" name="title" id="s_title"></div>
           <div class="form-group"><label>Email</label><input type="email" name="email" id="s_email"></div>
-          <div class="form-group"><label>Avatar / Hero Image URL</label><input type="url" name="avatar" id="s_avatar" placeholder="https://example.com/my-photo.jpg"></div>
-          <div id="avatarPreviewContainer"></div>
+          <div class="form-group"><label>Avatar / Hero Image</label><input type="file" name="avatar" id="s_avatar" accept="image/*"></div>
+          <div id="avatarPreviewContainer" style="margin-bottom:12px"></div>
+          <p style="font-size:.75rem;color:var(--textLight);margin-top:-8px;margin-bottom:12px">Select an image to upload, or leave empty to use initials</p>
           <div class="form-group"><label>Bio</label><textarea name="bio" id="s_bio" rows="3"></textarea></div>
           <div class="form-group"><label>About</label><textarea name="about" id="s_about" rows="5"></textarea></div>
         </fieldset>

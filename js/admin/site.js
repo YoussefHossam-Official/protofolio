@@ -15,26 +15,41 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('s_name').value = site.name || '';
   document.getElementById('s_title').value = site.title || '';
   document.getElementById('s_email').value = site.email || '';
-  document.getElementById('s_avatar').value = site.avatar || '';
+  document.getElementById('s_avatar').value = '';
   document.getElementById('s_bio').value = site.bio || '';
   document.getElementById('s_about').value = site.about || '';
   document.getElementById('s_github').value = site.social?.github || '';
   document.getElementById('s_linkedin').value = site.social?.linkedin || '';
   document.getElementById('s_twitter').value = site.social?.twitter || '';
 
-  // Avatar preview
-  const avatarInput = document.getElementById('s_avatar');
+  // Avatar upload — convert file to base64
+  let avatarDataUrl = site.avatar || '';
+  const fileInput = document.getElementById('s_avatar');
   const previewContainer = document.getElementById('avatarPreviewContainer');
-  function updatePreview() {
-    const url = avatarInput.value.trim();
-    if (url) {
-      previewContainer.innerHTML = `<img src="${url}" alt="Avatar preview" class="avatar-preview" onerror="this.style.display='none'">`;
+  function renderPreview(src) {
+    if (src) {
+      previewContainer.innerHTML = `<img src="${src}" alt="Avatar preview" class="avatar-preview" style="width:120px;height:120px"> <button type="button" id="removeAvatar" class="btn btn-outline" style="display:inline-block;margin-left:8px;vertical-align:top">Remove</button>`;
+      document.getElementById('removeAvatar')?.addEventListener('click', () => {
+        avatarDataUrl = '';
+        previewContainer.innerHTML = '<p style="color:var(--textLight);font-size:.8rem">No image</p>';
+        fileInput.value = '';
+      });
     } else {
-      previewContainer.innerHTML = '';
+      previewContainer.innerHTML = '<p style="color:var(--textLight);font-size:.8rem">No image — will show initials</p>';
     }
   }
-  updatePreview();
-  avatarInput.addEventListener('input', updatePreview);
+  renderPreview(avatarDataUrl);
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) { alert('Image too large. Max 2MB.'); fileInput.value = ''; return; }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      avatarDataUrl = e.target.result;
+      renderPreview(avatarDataUrl);
+    };
+    reader.readAsDataURL(file);
+  });
 
   // Colors
   const colorGrid = document.getElementById('colorGrid');
@@ -60,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       name: document.getElementById('s_name').value,
       title: document.getElementById('s_title').value,
       email: document.getElementById('s_email').value,
-      avatar: document.getElementById('s_avatar').value,
+      avatar: avatarDataUrl,
       bio: document.getElementById('s_bio').value,
       about: document.getElementById('s_about').value,
       social: {

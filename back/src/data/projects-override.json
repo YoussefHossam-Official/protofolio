@@ -23,5 +23,14 @@
   {
     "slug": "wifi-captive-portal-professional",
     "hidden": true
+  },
+  {
+    "id": 1781012273956,
+    "title": "TestDelNow",
+    "description": "test",
+    "techStack": [
+      "JS"
+    ],
+    "slug": "testdelnow"
   }
 ]

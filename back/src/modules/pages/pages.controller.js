@@ -1,9 +1,11 @@
-// Pages controller — returns JSON data for each page
 const dataService = require('../../services/data.service');
+
+// hna kol controller by3ml response lel page elly 3yzeenha
+// kol wa7da btgeeb data mn el JSON files w tba3tha
 
 module.exports.home = (req, res) => {
   const site = dataService.readFile('site.json');
-  const projects = dataService.getAll('projects.json').slice(0, 3);
+  const projects = dataService.getAll('projects.json').slice(0, 3); // a5er 3 m4ary3
   res.json({ page: 'home', site, projects });
 };
 
@@ -21,7 +23,7 @@ module.exports.projectsPage = (req, res) => {
 
 module.exports.projectDetail = (req, res) => {
   const project = dataService.getBySlug('projects.json', req.params.slug);
-  if (!project) return res.status(404).json({ error: 'Project not found' });
+  if (!project) return res.status(404).json({ error: 'elm4ro3 da m4 mawgod' });
   res.json({ page: 'project', project });
 };
 

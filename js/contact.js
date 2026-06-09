@@ -22,16 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const data = await res.json();
       if (res.ok) {
-        msg.textContent = 'Message sent successfully!';
-        msg.style.color = 'var(--success)';
+        showToast('Message sent successfully!', 'success');
         form.reset();
       } else {
-        msg.textContent = data.error || 'Something went wrong';
-        msg.style.color = 'var(--error)';
+        showToast(data.error || 'Something went wrong', 'error');
       }
     } catch {
-      msg.textContent = 'Network error. Please try again.';
-      msg.style.color = 'var(--error)';
+      showToast('Network error. Please try again.', 'error');
     }
     btn.disabled = false;
     btn.textContent = 'Send Message';

@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    const msg = document.getElementById('sk_msg');
-    if (res.ok) { msg.textContent = 'Saved!'; msg.style.color = 'var(--success)'; }
-    else { msg.textContent = 'Error'; msg.style.color = 'var(--error)'; }
+    if (res.ok) showToast('Skills saved', 'success');
+    else { const data = await res.json(); showToast(data.error || 'Error saving skills', 'error'); }
   });
 });

@@ -112,6 +112,9 @@
         if (s.email) document.getElementById('footerEmail').href = 'mailto:' + s.email;
         if (s.phone) document.getElementById('footerPhone').textContent = s.phone;
         document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
+      })
+      .catch(() => {
+        document.getElementById('contactInfo').innerHTML = '<p>Failed to load contact info.</p>';
       });
   </script>
 </body>

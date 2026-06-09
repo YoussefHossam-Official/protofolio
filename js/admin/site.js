@@ -90,9 +90,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    const msg = document.getElementById('siteMsg');
-    if (res.ok) { msg.textContent = 'Saved!'; msg.style.color = 'var(--success)'; }
-    else { msg.textContent = 'Error saving'; msg.style.color = 'var(--error)'; }
+    if (res.ok) showToast('Site settings saved', 'success');
+    else { const data = await res.json(); showToast(data.error || 'Error saving', 'error'); }
   });
 
   // Change password

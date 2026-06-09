@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function deleteProject(id) {
     if (!confirm('Delete this project?')) return;
     const res = await fetch(`/api/admin/projects/${id}`, { method: 'DELETE' });
-    if (res.ok) { loadProjects(); }
-    else { const data = await res.json(); alert(data.error || 'Delete failed'); }
+    if (res.ok) { showToast('Project deleted', 'success'); loadProjects(); }
+    else { const data = await res.json(); showToast(data.error || 'Delete failed', 'error'); }
   }
 
   // Show/hide add form
@@ -99,8 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       res = await fetch('/api/admin/projects', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     }
     if (res.ok) {
-      msg.textContent = 'Saved!';
-      msg.style.color = 'var(--success)';
+      showToast('Project ' + (editingId ? 'updated' : 'created'), 'success');
       document.getElementById('projectForm').style.display = 'none';
       document.getElementById('showAddForm').textContent = '+ Add Project';
       editingId = null;
@@ -108,8 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       loadProjects();
     } else {
       const data = await res.json();
-      msg.textContent = data.error || 'Error';
-      msg.style.color = 'var(--error)';
+      showToast(data.error || 'Error saving project', 'error');
     }
   });
 

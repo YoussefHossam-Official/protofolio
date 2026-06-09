@@ -115,6 +115,11 @@
           </div>
         `).join('');
         setTimeout(() => timeline.classList.add('visible'), 150);
+      })
+      .catch(() => {
+        document.getElementById('aboutText').innerHTML = '<p>Failed to load about info.</p>';
+        document.getElementById('skillsContent').innerHTML = '';
+        document.getElementById('timeline').innerHTML = '<p class="empty">Failed to load experience.</p>';
       });
   </script>
 </body>

@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function deleteItem(id) {
     if (!confirm('Delete this experience entry?')) return;
     const res = await fetch(`/api/admin/experience/${id}`, { method: 'DELETE' });
-    if (res.ok) loadList();
+    if (res.ok) { showToast('Experience deleted', 'success'); loadList(); }
+    else { const data = await res.json(); showToast(data.error || 'Delete failed', 'error'); }
   }
 
   document.getElementById('showAddForm').addEventListener('click', () => {
@@ -80,7 +81,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       to: document.getElementById('e_to').value,
       description: document.getElementById('e_desc').value.split('\n').filter(Boolean),
     };
-    const msg = document.getElementById('e_msg');
     let res;
     if (editingId) {
       res = await fetch(`/api/admin/experience/${editingId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
@@ -88,16 +88,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       res = await fetch('/api/admin/experience', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     }
     if (res.ok) {
-      msg.textContent = 'Saved!';
-      msg.style.color = 'var(--success)';
+      showToast('Experience ' + (editingId ? 'updated' : 'added'), 'success');
       document.getElementById('expForm').style.display = 'none';
       document.getElementById('showAddForm').textContent = '+ Add Experience';
       editingId = null;
       document.getElementById('expForm').reset();
       loadList();
     } else {
-      msg.textContent = 'Error';
-      msg.style.color = 'var(--error)';
+      const data = await res.json();
+      showToast(data.error || 'Error saving', 'error');
     }
   });
 

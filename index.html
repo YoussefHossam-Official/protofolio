@@ -123,6 +123,11 @@
         if (s.phone) document.getElementById('footerPhone').textContent = s.phone;
         document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
         applyTheme(s.colors);
+      })
+      .catch(() => {
+        document.getElementById('heroBio').textContent = 'Welcome to my portfolio';
+        document.getElementById('heroName').textContent = 'Yousef Hossam';
+        document.getElementById('heroBadge').textContent = 'Backend Developer';
       });
     fetch('/api/projects')
       .then(r => r.json())

@@ -83,10 +83,10 @@
           applyTheme(s.colors);
           if (s.social?.linkedin) document.getElementById('footerLinkedin').href = s.social.linkedin;
           if (s.email) document.getElementById('footerEmail').href = 'mailto:' + s.email;
-          if (s.phone) document.getElementById('footerPhone').textContent = s.phone;
-          document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
-        }
-      });
+        if (s.phone) document.getElementById('footerPhone').textContent = s.phone;
+        document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
+      })
+      .catch(() => {});
     fetch('/api/projects')
       .then(r => r.json())
       .then(projects => {

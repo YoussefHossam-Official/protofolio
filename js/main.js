@@ -27,8 +27,17 @@ function applyTheme(colors) {
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('menuToggle');
   const nav = document.querySelector('.nav');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
   if (toggle && nav) {
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      if (menuIcon && closeIcon) {
+        const isOpen = nav.classList.contains('open');
+        menuIcon.style.display = isOpen ? 'none' : 'block';
+        closeIcon.style.display = isOpen ? 'block' : 'none';
+      }
+    });
   }
 });
 

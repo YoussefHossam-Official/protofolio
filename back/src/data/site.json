@@ -14,17 +14,17 @@
   "colors": {
     "primary": "#05050A",
     "secondary": "#f5f5f5",
-    "accent": "#6366f1",
+    "accent": "#bd93f9",
     "text": "#1a1a2e",
     "textLight": "#64748b",
     "cardBg": "#ffffff",
     "border": "#e2e8f0",
     "success": "#22c55e",
     "error": "#ef4444",
-    "darkBg": "#05050A",
-    "darkCard": "#0D0D1A",
-    "darkText": "#E0E0FF",
-    "darkBorder": "#1A1A3E"
+    "darkBg": "#282a36",
+    "darkCard": "#44475a",
+    "darkText": "#f8f8f2",
+    "darkBorder": "#6272a4"
   },
   "siteName": "Youssef Hossam",
   "siteDesc": "Backend Developer Portfolio"

@@ -12,19 +12,19 @@
     "twitter": "https://twitter.com/youssef_hossam"
   },
   "colors": {
-    "primary": "#282a36",
-    "secondary": "#282a36",
-    "accent": "#bd93f9",
-    "text": "#f8f8f2",
-    "textLight": "#bfbfc7",
-    "cardBg": "#44475a",
-    "border": "#6272a4",
-    "success": "#50fa7b",
-    "error": "#ff5555",
-    "darkBg": "#282a36",
-    "darkCard": "#44475a",
-    "darkText": "#f8f8f2",
-    "darkBorder": "#6272a4"
+    "primary": "#050505",
+    "secondary": "#050505",
+    "accent": "#00ff41",
+    "text": "#e0e0e0",
+    "textLight": "#888888",
+    "cardBg": "#0a0a0a",
+    "border": "#1a1a1a",
+    "success": "#00ff41",
+    "error": "#ff3333",
+    "darkBg": "#050505",
+    "darkCard": "#0a0a0a",
+    "darkText": "#e0e0e0",
+    "darkBorder": "#1a1a1a"
   },
   "siteName": "Yousef Hossam",
   "siteDesc": "Backend Developer Portfolio"

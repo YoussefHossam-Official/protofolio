@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="ar" dir="ltr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects — Yousef Hossam</title>
+  <title>Projects — Yousef Hossam | المشاريع — يوسف حسام</title>
+  <meta name="description" content="Explore the projects of Yousef Hossam — backend developer. تصفح مشاريع يوسف حسام — مطور باك إند.">
+  <meta name="keywords" content="Yousef Hossam, يوسف حسام, projects, مشاريع, backend, portfolio">
+  <link rel="canonical" href="https://youssefhossam-dev.vercel.app/projects.html">
+  <meta property="og:title" content="Projects — Yousef Hossam">
+  <meta property="og:description" content="Backend development projects by Yousef Hossam.">
+  <meta property="og:url" content="https://youssefhossam-dev.vercel.app/projects.html">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yousef Hossam",
+    "alternateName": "يوسف حسام",
+    "jobTitle": "Backend Developer",
+    "url": "https://youssefhossam-dev.vercel.app"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/dark.css">
   <style id="theme-vars"></style>
 </head>
 <body>
@@ -20,7 +36,6 @@
         <a href="/projects.html" class="active">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
     </div>
   </header>
@@ -55,7 +70,6 @@
   <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/main.js"></script>
-  <script src="/js/dark-mode.js"></script>
   <script>
     fetch('/api/pages')
       .then(r => r.json())

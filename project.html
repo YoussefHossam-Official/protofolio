@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="ar" dir="ltr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project — Yousef Hossam</title>
+  <meta name="description" content="Project detail — Yousef Hossam backend portfolio. تفاصيل المشروع — يوسف حسام.">
+  <meta name="robots" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/dark.css">
   <style id="theme-vars"></style>
 </head>
 <body>
@@ -20,7 +21,6 @@
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
     </div>
   </header>
@@ -47,7 +47,6 @@
   <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/main.js"></script>
-  <script src="/js/dark-mode.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
     const slug = params.get('slug');

@@ -24,7 +24,6 @@ function applyTheme(colors) {
   if (style) style.textContent = ':root{' + Object.entries(vars).map(([k, v]) => `${k}:${v}`).join(';') + '}';
 }
 
-// Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('menuToggle');
   const nav = document.querySelector('.nav');
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Scroll reveal animations using IntersectionObserver
 document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -49,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Hidden admin access: click the logo 3 times
 document.addEventListener('DOMContentLoaded', () => {
   let clickCount = 0;
   let clickTimer = null;
@@ -67,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Also support hidden button in bottom-right corner
   const adminLink = document.getElementById('adminLink');
   if (adminLink) {
     adminLink.addEventListener('click', () => {

@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="ar" dir="ltr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Yousef Hossam</title>
+  <title>About — Yousef Hossam | من أنا — يوسف حسام</title>
+  <meta name="description" content="Learn about Yousef Hossam — backend developer specializing in Node.js, Express, and scalable architectures. تعرف على يوسف حسام — مطور باك إند.">
+  <meta name="keywords" content="Yousef Hossam, يوسف حسام, backend developer, about, من أنا, مطور باك إند, Egypt">
+  <link rel="canonical" href="https://youssefhossam-dev.vercel.app/about.html">
+  <meta property="og:title" content="About Yousef Hossam — Backend Developer">
+  <meta property="og:description" content="Backend developer specializing in Node.js, Express, and scalable APIs.">
+  <meta property="og:url" content="https://youssefhossam-dev.vercel.app/about.html">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yousef Hossam",
+    "alternateName": "يوسف حسام",
+    "jobTitle": "Backend Developer",
+    "url": "https://youssefhossam-dev.vercel.app"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/dark.css">
   <style id="theme-vars"></style>
 </head>
 <body>
@@ -20,7 +36,6 @@
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
     </div>
   </header>
@@ -68,7 +83,6 @@
   <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/main.js"></script>
-  <script src="/js/dark-mode.js"></script>
   <script>
     fetch('/api/pages/about')
       .then(r => r.json())

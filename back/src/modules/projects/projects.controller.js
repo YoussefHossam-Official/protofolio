@@ -6,13 +6,15 @@ const OVERRIDE_FILE = 'projects-override.json';
 
 function mergeOverrides(githubRepos, overrides) {
   const map = new Map();
+  const hidden = new Set();
   githubRepos.forEach(r => map.set(r.slug, r));
   overrides.forEach(o => {
     const slug = o.slug || slugify(o.title);
+    if (o.hidden) { hidden.add(slug); return; }
     if (map.has(slug)) map.set(slug, { ...map.get(slug), ...o });
     else map.set(slug, { ...o, id: o.id || Date.now() });
   });
-  return Array.from(map.values());
+  return Array.from(map.values()).filter(p => !hidden.has(p.slug));
 }
 
 module.exports.list = (req, res) => {
@@ -49,7 +51,17 @@ module.exports.update = (req, res) => {
 
 module.exports.remove = (req, res) => {
   const id = parseInt(req.params.id);
-  const deleted = dataService.remove(OVERRIDE_FILE, id);
-  if (!deleted) return res.status(404).json({ error: 'm4 mawgod asln' });
+  const all = mergeOverrides(githubService.getRepos(), dataService.getAll(OVERRIDE_FILE));
+  const project = all.find(p => p.id === id);
+  if (!project) return res.status(404).json({ error: 'm4 mawgod asln' });
+
+  const overrides = dataService.getAll(OVERRIDE_FILE);
+  const hasOverride = overrides.some(o => (o.slug || slugify(o.title)) === project.slug);
+  if (hasOverride) {
+    dataService.remove(OVERRIDE_FILE, id);
+  } else {
+    overrides.push({ slug: project.slug, hidden: true });
+    dataService.writeFile(OVERRIDE_FILE, overrides);
+  }
   res.json({ success: true });
 };

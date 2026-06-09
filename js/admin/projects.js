@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function deleteProject(id) {
     if (!confirm('Delete this project?')) return;
     const res = await fetch(`/api/admin/projects/${id}`, { method: 'DELETE' });
-    if (res.ok) loadProjects();
+    if (res.ok) { loadProjects(); }
+    else { const data = await res.json(); alert(data.error || 'Delete failed'); }
   }
 
   // Show/hide add form

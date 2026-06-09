@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   fileInput.addEventListener('change', () => {
     const file = fileInput.files[0];
     if (!file) return;
-    if (file.size > 2 * 1024 * 1024) { alert('Image too large. Max 2MB.'); fileInput.value = ''; return; }
+    if (file.size > 20 * 1024 * 1024) { alert('Image too large. Max 20MB.'); fileInput.value = ''; return; }
     const reader = new FileReader();
     reader.onload = (e) => {
       avatarDataUrl = e.target.result;

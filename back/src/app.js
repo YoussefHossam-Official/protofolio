@@ -38,9 +38,9 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: true, credentials: true }));
 
 // ben7awl el JSON body mn el requests le JS object
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: '20mb' }));
 // ben7awl el URL-encoded body (mn el forms)
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 // da by2ra el cookies (3ashan el JWT token)
 app.use(cookieParser());

@@ -7,7 +7,7 @@ module.exports = {
   masterResetKey: process.env.MASTER_RESET_KEY || 'reset123',
   paths: {
     data: path.join(__dirname, '..', 'data'),
-    front: path.join(__dirname, '..', '..', '..', 'front'),
+    front: path.join(__dirname, '..', '..', '..'),
   },
   email: {
     host: process.env.SMTP_HOST || 'smtp.gmail.com',

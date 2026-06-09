@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "id": 1781010913371,
+    "title": "DeleteTest",
+    "description": "testing delete",
+    "techStack": [
+      "Node.js"
+    ],
+    "slug": "deletetest"
+  },
+  {
+    "slug": "blog-api-advanced",
+    "hidden": true
+  },
+  {
+    "slug": "ecommerce-api",
+    "hidden": true
+  }
+]

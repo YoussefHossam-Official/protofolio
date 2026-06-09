@@ -1,12 +1,24 @@
 const dataService = require('../../services/data.service');
+const githubService = require('../../services/github.service');
+const { slugify } = require('../../utils/helpers');
 
-// hna kol controller by3ml response lel page elly 3yzeenha
-// kol wa7da btgeeb data mn el JSON files w tba3tha
+function mergeRepos() {
+  const repos = githubService.getRepos();
+  const overrides = dataService.getAll('projects-override.json');
+  const map = new Map();
+  repos.forEach(r => map.set(r.slug, r));
+  overrides.forEach(o => {
+    const slug = o.slug || slugify(o.title);
+    if (map.has(slug)) map.set(slug, { ...map.get(slug), ...o });
+    else map.set(slug, o);
+  });
+  return Array.from(map.values());
+}
 
 module.exports.home = (req, res) => {
   const site = dataService.readFile('site.json');
-  const projects = dataService.getAll('projects.json').slice(0, 6); // awel 6 m4ary3
-  res.json({ page: 'home', site, projects });
+  const all = mergeRepos();
+  res.json({ page: 'home', site, projects: all.slice(0, 6) });
 };
 
 module.exports.about = (req, res) => {
@@ -17,12 +29,12 @@ module.exports.about = (req, res) => {
 };
 
 module.exports.projectsPage = (req, res) => {
-  const projects = dataService.getAll('projects.json');
-  res.json({ page: 'projects', projects });
+  res.json({ page: 'projects', projects: mergeRepos() });
 };
 
 module.exports.projectDetail = (req, res) => {
-  const project = dataService.getBySlug('projects.json', req.params.slug);
+  const all = mergeRepos();
+  const project = all.find(p => p.slug === req.params.slug);
   if (!project) return res.status(404).json({ error: 'elm4ro3 da m4 mawgod' });
   res.json({ page: 'project', project });
 };

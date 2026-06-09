@@ -1,25 +1,39 @@
+const githubService = require('../../services/github.service');
 const dataService = require('../../services/data.service');
 const { slugify } = require('../../utils/helpers');
 
-const FILE = 'projects.json';
+const OVERRIDE_FILE = 'projects-override.json';
 
-// CRUD 3ala el projects
+function mergeOverrides(githubRepos, overrides) {
+  const map = new Map();
+  githubRepos.forEach(r => map.set(r.slug, r));
+  overrides.forEach(o => {
+    const slug = o.slug || slugify(o.title);
+    if (map.has(slug)) map.set(slug, { ...map.get(slug), ...o });
+    else map.set(slug, { ...o, id: o.id || Date.now() });
+  });
+  return Array.from(map.values());
+}
 
 module.exports.list = (req, res) => {
-  res.json(dataService.getAll(FILE));
+  const repos = githubService.getRepos();
+  const overrides = dataService.getAll(OVERRIDE_FILE);
+  res.json(mergeOverrides(repos, overrides));
 };
 
 module.exports.show = (req, res) => {
-  const project = dataService.getBySlug(FILE, req.params.slug);
+  const repos = githubService.getRepos();
+  const overrides = dataService.getAll(OVERRIDE_FILE);
+  const all = mergeOverrides(repos, overrides);
+  const project = all.find(p => p.slug === req.params.slug);
   if (!project) return res.status(404).json({ error: 'elm4ro3 da m4 mawgod yasta' });
   res.json(project);
 };
 
 module.exports.create = (req, res) => {
   const data = { ...req.body, slug: slugify(req.body.title) };
-  // law el features 22a3bd gowa string, bn2s8mohom 3ala lines
   if (typeof data.features === 'string') data.features = data.features.split('\n').filter(Boolean);
-  const project = dataService.create(FILE, data);
+  const project = dataService.create(OVERRIDE_FILE, data);
   res.status(201).json(project);
 };
 
@@ -28,14 +42,14 @@ module.exports.update = (req, res) => {
   const data = { ...req.body };
   if (data.title) data.slug = slugify(data.title);
   if (typeof data.features === 'string') data.features = data.features.split('\n').filter(Boolean);
-  const project = dataService.update(FILE, id, data);
+  const project = dataService.update(OVERRIDE_FILE, id, data);
   if (!project) return res.status(404).json({ error: 'm4 mawgod, y3ny mfesh7aga ttt8ayar' });
   res.json(project);
 };
 
 module.exports.remove = (req, res) => {
   const id = parseInt(req.params.id);
-  const deleted = dataService.remove(FILE, id);
+  const deleted = dataService.remove(OVERRIDE_FILE, id);
   if (!deleted) return res.status(404).json({ error: 'm4 mawgod asln' });
   res.json({ success: true });
 };

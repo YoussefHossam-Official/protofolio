@@ -23,6 +23,7 @@ const projectsRoutes = require('./modules/projects/projects.routes');
 const contactRoutes = require('./modules/contact/contact.routes');
 const authRoutes = require('./modules/auth/auth.routes');
 const adminRoutes = require('./modules/admin/admin.routes');
+const githubRoutes = require('./modules/github/github.routes');
 
 // bn3ml el express app
 const app = express();
@@ -64,6 +65,8 @@ app.use('/api/contact', rateLimiter, contactRoutes);
 app.use('/api/auth', authRoutes);
 // el admin routes (CRUD — m7my bel auth middleware)
 app.use('/api/admin', adminRoutes);
+// el GitHub webhook w refresh (3ashan el repos ttt7addth awtomatyk)
+app.use('/api/github', githubRoutes);
 
 // law 7ad 7awel yro7 le /admin/* w mfesh file, nwreeh el admin index
 app.get('/admin/*', (req, res) => {

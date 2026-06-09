@@ -13,14 +13,14 @@
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <a href="/" class="logo" id="logoLink">Yousef Hossam<span class="dot">.</span></a>
       <nav class="nav">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
     </div>
   </header>
 
@@ -36,9 +36,11 @@
 
   <footer class="footer">
     <div class="container">
-      <p class="footer-copy">&copy; Youssef Hossam</p>
+      <p class="footer-copy">&copy; Yousef Hossam</p>
     </div>
   </footer>
+
+  <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/dark-mode.js"></script>
   <script>

@@ -1,9 +1,8 @@
-// Admin site settings page
+// Admin site settings
 document.addEventListener('DOMContentLoaded', async () => {
   const authRes = await fetch('/api/auth/check');
   if (!authRes.ok) { window.location.href = '/admin/login.html'; return; }
 
-  // Logout
   document.getElementById('adminLogout')?.addEventListener('click', async (e) => {
     e.preventDefault();
     await fetch('/api/auth/logout', { method: 'POST' });
@@ -13,15 +12,29 @@ document.addEventListener('DOMContentLoaded', async () => {
   const res = await fetch('/api/admin/site');
   const site = await res.json();
 
-  // Populate form
   document.getElementById('s_name').value = site.name || '';
   document.getElementById('s_title').value = site.title || '';
   document.getElementById('s_email').value = site.email || '';
+  document.getElementById('s_avatar').value = site.avatar || '';
   document.getElementById('s_bio').value = site.bio || '';
   document.getElementById('s_about').value = site.about || '';
   document.getElementById('s_github').value = site.social?.github || '';
   document.getElementById('s_linkedin').value = site.social?.linkedin || '';
   document.getElementById('s_twitter').value = site.social?.twitter || '';
+
+  // Avatar preview
+  const avatarInput = document.getElementById('s_avatar');
+  const previewContainer = document.getElementById('avatarPreviewContainer');
+  function updatePreview() {
+    const url = avatarInput.value.trim();
+    if (url) {
+      previewContainer.innerHTML = `<img src="${url}" alt="Avatar preview" class="avatar-preview" onerror="this.style.display='none'">`;
+    } else {
+      previewContainer.innerHTML = '';
+    }
+  }
+  updatePreview();
+  avatarInput.addEventListener('input', updatePreview);
 
   // Colors
   const colorGrid = document.getElementById('colorGrid');
@@ -31,7 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     div.className = 'color-item';
     div.innerHTML = `<label>${key}</label><input type="color" class="color-picker" data-key="${key}" value="${val}">`;
     colorGrid.appendChild(div);
-    // Live preview on change
     div.querySelector('.color-picker').addEventListener('input', function() {
       const root = document.documentElement;
       const cssKey = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
@@ -48,6 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       name: document.getElementById('s_name').value,
       title: document.getElementById('s_title').value,
       email: document.getElementById('s_email').value,
+      avatar: document.getElementById('s_avatar').value,
       bio: document.getElementById('s_bio').value,
       about: document.getElementById('s_about').value,
       social: {

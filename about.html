@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Youssef Hossam</title>
+  <title>About — Yousef Hossam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
@@ -13,41 +13,41 @@
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <a href="/" class="logo" id="logoLink">Yousef Hossam<span class="dot">.</span></a>
       <nav class="nav">
         <a href="/">Home</a>
         <a href="/about.html" class="active">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
     </div>
   </header>
 
   <main>
     <section class="section page-header">
-      <div class="container">
+      <div class="container fade-in-up">
         <h1>About Me</h1>
       </div>
     </section>
 
     <section class="section">
       <div class="container about-grid">
-        <div class="about-text" id="aboutText">
+        <div class="about-text fade-in-left" id="aboutText">
           <p class="loading">Loading...</p>
         </div>
-        <div class="skills-section" id="skillsSection">
+        <div class="skills-section fade-in-right" id="skillsSection">
           <h3>Skills</h3>
-          <div id="skillsContent"><p class="loading">Loading...</p></div>
+          <div id="skillsContent" class="stagger-children"><p class="loading">Loading...</p></div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
+      <div class="container fade-in-up">
         <h2 class="section-title">Experience</h2>
-        <div class="timeline" id="timeline">
+        <div class="timeline stagger-children" id="timeline">
           <p class="loading">Loading...</p>
         </div>
       </div>
@@ -61,9 +61,11 @@
         <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
         <a href="#" id="footerEmail">Email</a>
       </div>
-      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+      <p class="footer-copy" id="footerCopy">&copy; Yousef Hossam</p>
     </div>
   </footer>
+
+  <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/main.js"></script>
   <script src="/js/dark-mode.js"></script>
@@ -77,13 +79,12 @@
         if (s.social?.linkedin) document.getElementById('footerLinkedin').href = s.social.linkedin;
         if (s.email) document.getElementById('footerEmail').href = 'mailto:' + s.email;
         document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
-        // Skills
         const skills = d.skills;
         const container = document.getElementById('skillsContent');
         container.innerHTML = Object.entries(skills || {}).map(([cat, items]) =>
           `<div class="skill-cat"><h4>${cat.charAt(0).toUpperCase() + cat.slice(1)}</h4><div class="skill-tags">${(items || []).map(i => `<span class="skill-tag">${i}</span>`).join('')}</div></div>`
         ).join('');
-        // Timeline
+        setTimeout(() => container.classList.add('visible'), 100);
         const timeline = document.getElementById('timeline');
         if (!d.experience?.length) { timeline.innerHTML = '<p class="empty">No experience added yet.</p>'; return; }
         timeline.innerHTML = d.experience.map(e => `
@@ -94,6 +95,7 @@
             ${e.description ? `<p>${Array.isArray(e.description) ? e.description.join('<br>') : e.description}</p>` : ''}
           </div>
         `).join('');
+        setTimeout(() => timeline.classList.add('visible'), 150);
       });
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects — Youssef Hossam</title>
+  <title>Projects — Yousef Hossam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
@@ -13,28 +13,28 @@
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <a href="/" class="logo" id="logoLink">Yousef Hossam<span class="dot">.</span></a>
       <nav class="nav">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
         <a href="/projects.html" class="active">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
     </div>
   </header>
 
   <main>
     <section class="section page-header">
-      <div class="container">
+      <div class="container fade-in-up">
         <h1>Projects</h1>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="projects-grid" id="projectsList">
+        <div class="projects-grid stagger-children" id="projectsList">
           <p class="loading">Loading projects...</p>
         </div>
       </div>
@@ -48,9 +48,11 @@
         <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
         <a href="#" id="footerEmail">Email</a>
       </div>
-      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+      <p class="footer-copy" id="footerCopy">&copy; Yousef Hossam</p>
     </div>
   </footer>
+
+  <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/main.js"></script>
   <script src="/js/dark-mode.js"></script>
@@ -75,6 +77,7 @@
             </div>
           </a>
         `).join('');
+        setTimeout(() => container.classList.add('visible'), 100);
       });
   </script>
 </body>

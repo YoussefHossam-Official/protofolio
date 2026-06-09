@@ -1,4 +1,4 @@
-/* Dark mode — controlled by [data-theme="dark"] on <html> */
+/* Dark mode */
 [data-theme="dark"] {
   --bg: var(--darkBg);
   --cardBg: var(--darkCard);
@@ -6,7 +6,8 @@
   --textLight: #94a3b8;
   --border: var(--darkBorder);
 }
-[data-theme="dark"] .project-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+[data-theme="dark"] .project-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,.4); }
 [data-theme="dark"] .hero-code { background: #0a0a0a; }
 [data-theme="dark"] .skill-tag { background: var(--darkCard); border: 1px solid var(--darkBorder); }
 [data-theme="dark"] .header { background: rgba(10,10,10,.8); }
+[data-theme="dark"] .hero-image { box-shadow: 0 20px 60px rgba(99,102,241,.08); }

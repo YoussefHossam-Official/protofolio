@@ -1,4 +1,3 @@
-// Dark mode toggle — saves preference in localStorage
 (function() {
   const STORAGE_KEY = 'theme';
   const darkToggle = document.getElementById('darkToggle');
@@ -11,12 +10,11 @@
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE_KEY, theme);
+    if (darkToggle) darkToggle.textContent = theme === 'dark' ? 'Light' : 'Dark';
   }
 
-  // Init
   setTheme(getPreferredTheme());
 
-  // Toggle handler
   if (darkToggle) {
     darkToggle.addEventListener('click', () => {
       setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');

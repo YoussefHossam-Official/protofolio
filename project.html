@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project — Youssef Hossam</title>
+  <title>Project — Yousef Hossam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
@@ -13,21 +13,21 @@
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <a href="/" class="logo" id="logoLink">Yousef Hossam<span class="dot">.</span></a>
       <nav class="nav">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
     </div>
   </header>
 
   <main>
     <section class="section">
-      <div class="container project-detail" id="projectDetail">
+      <div class="container project-detail fade-in-up" id="projectDetail">
         <p class="loading">Loading project...</p>
       </div>
     </section>
@@ -40,9 +40,11 @@
         <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
         <a href="#" id="footerEmail">Email</a>
       </div>
-      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+      <p class="footer-copy" id="footerCopy">&copy; Yousef Hossam</p>
     </div>
   </footer>
+
+  <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/main.js"></script>
   <script src="/js/dark-mode.js"></script>
@@ -57,10 +59,11 @@
       fetch(`/api/projects/${slug}`)
         .then(r => r.ok ? r.json() : Promise.reject('Not found'))
         .then(p => {
-          document.title = p.title + ' — Youssef Hossam';
+          document.title = p.title + ' — Yousef Hossam';
           document.getElementById('projectDetail').innerHTML = `
             <a href="/projects.html" class="back-link">&larr; Back to Projects</a>
             <h1>${p.title}</h1>
+            ${p.image ? `<img src="${p.image}" alt="${p.title}" style="border-radius:12px;margin-bottom:24px;max-width:100%">` : ''}
             <div class="tech-stack">${(p.techStack || []).map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
             <p class="project-desc">${p.description || ''}</p>
             ${p.features?.length ? `<h3>Features</h3><ul class="features-list">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}

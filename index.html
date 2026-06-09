@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Youssef Hossam — Backend Developer</title>
+  <title>Yousef Hossam — Backend Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
@@ -13,18 +13,15 @@
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a href="/" class="logo">YH<span class="dot">.</span></a>
+      <a href="/" class="logo" id="logoLink">Yousef Hossam<span class="dot">.</span></a>
       <nav class="nav">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">
-        <span class="icon-light">☀️</span>
-        <span class="icon-dark">🌙</span>
-      </button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode">Dark</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
     </div>
   </header>
 
@@ -33,23 +30,23 @@
       <div class="container">
         <div class="hero-content">
           <span class="badge" id="heroBadge">Backend Developer</span>
-          <h1 id="heroName">Youssef Hossam</h1>
+          <h1 id="heroName">Yousef Hossam</h1>
           <p class="hero-bio" id="heroBio">Loading...</p>
           <div class="hero-actions">
             <a href="/projects.html" class="btn btn-primary">View Projects</a>
             <a href="/contact.html" class="btn btn-outline">Contact Me</a>
           </div>
         </div>
-        <div class="hero-code">
-          <pre><code><span class="kw">const</span> developer = {<br>  name: <span class="str">"Youssef"</span>,<br>  role: <span class="str">"Backend Dev"</span>,<br>  stack: [<span class="str">"Node.js"</span>, <span class="str">"Express"</span>],<br>  status: <span class="str">"open to work"</span><br>};</code></pre>
+        <div class="hero-image" id="heroImageContainer">
+          <img id="heroImage" src="/images/avatar.jpg" alt="Yousef Hossam">
         </div>
       </div>
     </section>
 
     <section class="section featured-projects">
-      <div class="container">
+      <div class="container fade-in-up">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid" id="featuredProjects">
+        <div class="projects-grid stagger-children" id="featuredProjects">
           <p class="loading">Loading projects...</p>
         </div>
       </div>
@@ -63,9 +60,11 @@
         <a href="#" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
         <a href="#" id="footerEmail">Email</a>
       </div>
-      <p class="footer-copy" id="footerCopy">&copy; Youssef Hossam</p>
+      <p class="footer-copy" id="footerCopy">&copy; Yousef Hossam</p>
     </div>
   </footer>
+
+  <button class="hidden-link" id="adminLink" title="Admin"></button>
 
   <script src="/js/main.js"></script>
   <script src="/js/dark-mode.js"></script>
@@ -79,6 +78,8 @@
         document.getElementById('heroName').textContent = s.name;
         document.getElementById('heroBadge').textContent = s.title;
         document.getElementById('heroBio').textContent = s.bio;
+        if (s.avatar) document.getElementById('heroImage').src = s.avatar;
+        document.getElementById('heroImage').alt = s.name;
         if (s.social?.linkedin) document.getElementById('footerLinkedin').href = s.social.linkedin;
         if (s.email) document.getElementById('footerEmail').href = 'mailto:' + s.email;
         document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + s.name;
@@ -100,6 +101,7 @@
             <div class="tech-stack">${(p.techStack || []).map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
           </a>
         `).join('');
+        setTimeout(() => container.classList.add('visible'), 100);
       })
       .catch(() => document.getElementById('featuredProjects').innerHTML = '<p class="empty">Failed to load projects.</p>');
   </script>
